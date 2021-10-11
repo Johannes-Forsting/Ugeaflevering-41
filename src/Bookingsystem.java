@@ -14,12 +14,12 @@ public class Bookingsystem {
 
         //Et array af bands samt et array af spilletidspunter som bruges til at oprette et arrangement
         Band[] bands = {mindsOf99, suspekt, lukasGraham};
-        String[] spilleTidspunkter = {"15:30", "18:00", "21:00"};
+        String[] playingTimes = {"15:30", "18:00", "21:00"};
 
         //Arrangement "Roskilde Festival" oprettes, efter jeg har oprettet 100 "tomme" biletter.
         int amountOfTickets = 100;
         Ticket[] tickets = new Ticket[amountOfTickets];
-        Arrangement roskildeFestival = new Arrangement("Roskilde Festival 2022", bands, spilleTidspunkter, "EgonOlsen@gmail.com", "Roskildevej 23", tickets);
+        Arrangement roskildeFestival = new Arrangement("Roskilde Festival 2022", bands, playingTimes, "EgonOlsen@gmail.com", "Roskildevej 23", tickets);
 
         //Programmet udskrives ved en metode som bruger for loop til at køre band-navne, samt spilletidspunkter igennem.
         roskildeFestival.koncertStartTimes();
