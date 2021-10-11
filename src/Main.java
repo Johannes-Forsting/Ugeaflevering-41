@@ -15,23 +15,36 @@ public class Main {
         Band[] bands = {mindsOf99, suspekt, lukasGraham};
         String[] spilleTidspunkter = {"15:30", "18:00", "21:00"};
 
-        //Arrangement "Roskilde Festival" oprettes
-        Arrangement roskildeFestival = new Arrangement("Roskilde Festival 2022", bands, spilleTidspunkter, "EgonOlsen@gmail.com", "Roskildevej 23");
+        //Arrangement "Roskilde Festival" oprettes, efter jeg har oprettet 100 "tomme" biletter.
+        int amountOfTickets = 100;
+        Ticket[] tickets = new Ticket[amountOfTickets];
+        Arrangement roskildeFestival = new Arrangement("Roskilde Festival 2022", bands, spilleTidspunkter, "EgonOlsen@gmail.com", "Roskildevej 23", tickets);
 
         //Programmet udskrives ved en metode som bruger for loop til at køre band-navne, samt spilletidspunkter igennem.
         roskildeFestival.koncertStartTimes();
 
-        //Opretter 100 tickets som ikke har nogen ejer endnu. Samt 100 personer (I tilfælde af hver person kun køber 1 billet.)
-        int ticketsAndPersons = 100;
-        Ticket[] tickets = new Ticket[ticketsAndPersons];
+        //De 100 biletter tildeles roskilde festival og får et ticket ID.
         for (int i = 0; i < tickets.length; i++) {
             tickets[i] = new Ticket(roskildeFestival, (i + 1));
         }
-        Person[] persons = new Person[ticketsAndPersons];
 
-        //For loop som spørger om navn, antal billetter og købsinformationer indtil alle billetter er solgt
+        //Der oprettes 100 personer i tilfælde af alle personer kun køber 1 billet hver.
+        Person[] persons = new Person[amountOfTickets];
+
+        //Metode som assigner tickets til folk som gerne vil købe biletter.
+        assignTickets(persons, tickets);
+
+
+        //Metode som printer alle tickets og dets ejermand.
+        printAllTickets(tickets);
+        System.out.println("All tickets are now sold. Goodbye!");
+    }
+
+    //Metode som assigner biletter
+    public static void assignTickets(Person[] persons, Ticket[] tickets){
         int ticketsSold = 0;
         for (int i = 0; i < persons.length; i++) {
+            System.out.println("Hello, welcome to the ticketbooth!");
             String name = getName();
             int ticketsWanted = getAmountOfTickets(ticketsSold);
             String creditCardInfo = getCreditCardInfo();
@@ -40,30 +53,29 @@ public class Main {
                 tickets[j + ticketsSold].assignTicket(persons[i]);
             }
             ticketsSold = ticketsSold + ticketsWanted;
-            System.out.println("Tickets sold are now: " + ticketsSold);
             if (ticketsSold == 100){
                 break;
             }
         }
+    }
 
-
-        //Udgiver en liste for alle billetter og hvem som ejer dem.
+    //Metode som printer alle biletterne så man kan se hvem der ejer dem.
+    public static void printAllTickets(Ticket[] tickets){
         for (int i = 0; i < tickets.length; i++) {
             System.out.println(tickets[i].toString());
         }
-
-
-        System.out.println("All tickets are now sold. Goodbye!");
-
-
     }
 
+
+    //metode som bruges til at indtaste navn når der skal "købes" biletter.
     public static String getName(){
         System.out.println("What is your name");
         String name = scanner.nextLine();
         return name;
     }
 
+    //Metode der spørger hvor mange biletter man vil købe.
+    //Hvis man indtaster et antal der er under 0 eller over antallet af biletter som er tilbage spørger den bare igen.
     public static int getAmountOfTickets(int ticketsAllreadySold){
         int ticketAmount = 0;
         while (true) {
@@ -84,6 +96,8 @@ public class Main {
         return ticketAmount;
     }
 
+    //Metoden som spørger om credit kort infomation. Godtager kun en talrække på 8 tal.
+    //Hvis der er bogstaver, mellemrum, specialtegn eller mere/mindre end 8 tal spørger den igen.
     public static String getCreditCardInfo(){
         scanner.nextLine();
         String info = "";

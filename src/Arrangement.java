@@ -4,26 +4,20 @@ public class Arrangement {
     private String[] playingTimes;
     private String kontaktPersonEmail;
     private String adresse;
+    private Ticket[] tickets;
 
-    public Arrangement(String name, Band[] bands, String[] playingTimes, String kontaktPersonEmail, String adresse) {
+    public Arrangement(String name, Band[] bands, String[] playingTimes, String kontaktPersonEmail, String adresse, Ticket[] tickets) {
         this.name = name;
         this.bands = bands;
         this.playingTimes = playingTimes;
         this.kontaktPersonEmail = kontaktPersonEmail;
         this.adresse = adresse;
+        this.tickets = tickets;
     }
 
 
     public String getName(){
         return this.name;
-    }
-
-    public String getAdresse(){
-        return this.adresse;
-    }
-
-    public String getKontaktPersonEmail(){
-        return this.kontaktPersonEmail;
     }
 
 

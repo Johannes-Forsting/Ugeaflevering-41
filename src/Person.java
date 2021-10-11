@@ -10,10 +10,6 @@ public class Person {
 
     }
 
-    public int getAmountOfTickets(){
-        return this.amountOfTickets;
-    }
-
     public String getName(){
         return this.name;
     }
