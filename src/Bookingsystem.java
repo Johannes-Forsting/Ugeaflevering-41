@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
-public class Main {
+public class Bookingsystem {
     public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         //Oprettelse af 3 band-kontrakter samt 3 bands
+
         String[] mindsOf99Kontrakt = {"Har 4 medlemmer", "Skal have 1 fadøl i timen pr. medlem", "SKal have mange moneter for koncert"};
         String[] suspektKontrakt = {"Skal have et omklædningsrum", "skal have 2 fadøl i timen pr. medlem", "Skal have endnu flere moneter end de andre"};
         String[] lukasGrahamKontrakt = {"Skal have en makeupartist", "Skal have 1 alkoholfri øl klar når han ankommer", "Gør det gratis"};

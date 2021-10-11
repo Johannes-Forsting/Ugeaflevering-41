@@ -15,13 +15,9 @@ public class Arrangement {
         this.tickets = tickets;
     }
 
-
     public String getName(){
         return this.name;
     }
-
-
-
 
 
     public void koncertStartTimes(){
@@ -29,6 +25,4 @@ public class Arrangement {
             System.out.println(bands[i].getName() + " spiller kl. " + this.playingTimes[i]);
         }
     }
-
-
 }
